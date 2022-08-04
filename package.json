@@ -1,15 +1,24 @@
 {
   "name": "@astlaure/react-toolkit",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "Toolkit with everything related to React like router, i18n, contexts and guards",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "scripts": {
+    "rollup": "rollup -c",
     "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.1",
@@ -21,10 +30,20 @@
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
+    "rollup": "^2.77.2",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^28.0.7",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4",
     "uuid": "^8.3.2"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-router-dom": ">=6",
+    "uuid": ">=8"
   }
 }
