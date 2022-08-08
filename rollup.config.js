@@ -1,8 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
+import json from "@rollup/plugin-json";
 import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
+import sass from 'rollup-plugin-sass';
 import { terser } from "rollup-plugin-terser";
 import dts from 'rollup-plugin-dts';
 
@@ -24,19 +25,19 @@ export default [
       },
     ],
     plugins: [
+      json(),
       external(),
-      resolve(),
+      resolve({ browser: true }),
       commonjs(),
       typescript({ tsconfig: './tsconfig.lib.json' }),
-      postcss(),
+      sass({ output: 'dist/react-design.css' }),
       terser(),
     ],
   },
   {
     input: 'dist/esm/index.d.ts',
-    // input: 'dist/esm/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [/\.css$/],
+    external: [/\.css$/, /\.scss$/],
     plugins: [dts()],
   },
 ];

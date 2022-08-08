@@ -1,22 +1,34 @@
 {
   "name": "@astlaure/react-toolkit",
-  "version": "1.0.1",
+  "version": "0.0.3",
   "description": "Toolkit with everything related to React like router, i18n, contexts and guards",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "rollup": "rollup -c",
+    "prepublish": "npm run build",
+    "publish:prerelease": "npm version prerelease -preid alpha",
+    "publish:patch": "npm version patch",
+    "publish:minor": "npm version minor",
+    "publish:major": "npm version major",
+    "build": "rimraf ./dist && rollup -c",
+    "watch": "rollup -c -w",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "React",
+    "Toolkit"
+  ],
+  "author": "Alexandre St-Laurent",
   "license": "ISC",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
-  "types": "dist/index.d.ts",
   "devDependencies": {
+    "@hookform/resolvers": "^2.9.7",
     "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.4",
     "@testing-library/jest-dom": "^5.16.4",
@@ -27,23 +39,47 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
     "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "axios": "^0.27.2",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "i18next": "^21.8.16",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "i18next-http-backend": "^1.4.1",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "react": "^18.2.0",
+    "react-hook-form": "^7.34.0",
+    "react-i18next": "^11.18.3",
     "react-router-dom": "^6.3.0",
+    "rimraf": "^3.0.2",
     "rollup": "^2.77.2",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.2.13",
     "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^28.0.7",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "peerDependencies": {
+    "@hookform/resolvers": ">=2.9",
+    "i18next": ">=21.8",
+    "i18next-browser-languagedetector": ">=6",
+    "i18next-http-backend": ">=1.4",
     "react": ">=17",
+    "react-i18next": ">=11.18",
+    "react-hook-form": ">=7.34",
     "react-router-dom": ">=6",
-    "uuid": ">=8"
+    "uuid": ">=8",
+    "yup": ">=0.32"
   }
 }
